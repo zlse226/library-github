@@ -1,0 +1,211 @@
+.recommend-wrap{
+    width: 100%;
+    /* max-width: 1800px; */
+    padding: 90px 100px; /* margin말고 padding해야 전체페이지너비에 따라 안의 내용이 자연스레 줄어든다 */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+    font-family: "NanumSquareNeo", serif;
+
+}
+
+.recommend-heading{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.recommend-eyebrow{
+    font-size: 1.25em;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.recommend-eyebrow::before{
+    content: "";
+    width: 15px;
+    height: 2px;
+    background-color: #f5b400;
+}
+
+.recommend-title{
+    font-size: 3.75em;
+    font-weight: bold;
+}
+
+.recommend-content{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.recommend-content-inner{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+
+    background-color: yellow;
+}
+
+.recommend-btn{
+    width: 90px;
+    height: 90px;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer; 
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+
+}
+
+.recommend-btn img{
+    width: 50px;
+    height: 50px;
+
+}
+.recommend-btn:hover{
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+.recommend-left{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    flex-shrink: 0;
+}
+
+.recommend-left-title{
+    font-size: 2em;
+    font-weight: 600;
+
+}
+.recommend-left-info{
+    width: 100%;
+    line-height: 1.5;
+
+}
+
+
+
+.recommend-middle{
+    /* 이미지를 같은 기준점에 놓음 */
+    position: relative;
+    width: 900px;
+    height: 560px;
+    flex-shrink: 0;
+}
+
+.recommend-book{
+    width: 410px;
+    /* height: 510px; /* 이미지마다 비율이 다르므로 높이는 주지않는다 */
+    flex-shrink: 0;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center; /* 기본값임. center기준으로 transform 적용 (가운데를 고정한채 사방에서 애니메이션) */
+    transition: transform 0.5s ease,
+                opacity 0.5s ease;
+}
+.recommend-book img{
+    width: 100%;
+    display: block;
+}
+
+
+.recommend-book.main{
+    /* translate 요소 자신의 (너비, 높이)를 기준으로 이동하고 scale 확대 축소시킴 */
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 5;
+}
+.recommend-book.prev1{
+    transform: translate(-95%, -50%) scale(0.78);
+    z-index: 4;
+}
+.recommend-book.prev2{
+    transform: translate(-120%, -50%) scale(0.58);
+    z-index: 3;
+}
+
+.recommend-book.next1{
+    transform: translate(-5%, -50%) scale(0.78);
+    z-index: 4;
+}
+.recommend-book.next2{
+    transform: translate(20%, -50%) scale(0.58);
+    z-index: 3;
+}
+
+
+
+
+
+
+.recommend-right{
+    width: 450px;
+    height: 570px;
+    padding: 30px;
+    flex-shrink: 0; /* 이 요소의 크기를 절대 줄이지 말것 */
+
+    background-color: antiquewhite;
+}
+
+.recommend-right-title{
+    font-size: 1.9em;
+    font-weight: bold;
+    min-height: 80px;
+
+}
+
+.recommend-right-subtitle{
+    min-height: 35px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #666;
+
+}
+
+.recommend-meta{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 1.2em;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 30px 0;
+}
+
+.recommend-meta-row{
+    display: grid;
+    grid-template-columns: 110px 1fr; /* 이거안하면 flex, 와 label에 width를 줘야함 */
+    align-items: center;
+}
+
+
+.recommend-meta-label{
+    font-weight: 600;
+    color: #333;
+}
+.recommend-meta-value{
+    color: #555;
+}

@@ -1,0 +1,50 @@
+
+.header{
+    width: 100%;
+    min-height: 60px;
+    font-family: "MaruBuri", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 배경화면 이미지 필요 요소*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+
+.main-logo{
+    display: flex;
+    width: 110px;
+    height: 45px;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.main-logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.main-logo span{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gnb{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.gnb img{
+    width: 100%;
+    height: 100%;
+}

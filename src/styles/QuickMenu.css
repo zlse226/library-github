@@ -1,0 +1,43 @@
+.quick-menu{
+    margin-top: 90px;
+    display: flex;
+    gap: 80px;
+}
+.quick-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.quick-btn{
+    width: 130px;
+    height: 130px;
+    padding: 0;
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.35); /* 변경 */
+    border: 2px solid rgba(255, 255, 255, 0.9); /* 변경 */
+    backdrop-filter: blur(4px);
+    cursor: pointer; /* button은 브라우저 기본스타일때문에 부모의 cursor에 영향을 제대로 받지않을 수잇으므로 추가*/
+}
+
+.quick-btn-icon{
+    width: 50px;
+    height: 50px;
+}
+
+.quick-title{
+    font-size: 1.5em;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.55);
+    /* -webkit-text-stroke: 1px #000000; 테두리 두께와 색상 */
+    text-align: center;
+    padding: 4px 10px;
+    
+}

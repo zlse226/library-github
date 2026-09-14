@@ -1,0 +1,49 @@
+.side-menu{
+    /* width: 130px; */
+    position: absolute;
+    right: 52px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    border-radius: 30px;
+    background-color: rgba(220, 220, 220, 0.1);
+    backdrop-filter: blur(3px);
+}
+
+.side-menu li{
+    transition: transform 0.2s ease;
+}
+
+.side-menu li:hover{
+    transform: scale(1.05);
+}
+
+.side-menu a{
+    font-size: 1.2em;
+    color: #fff;
+    position: relative; /* 밑줄 위치 기준 */
+    display: inline-block;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);;
+}
+
+.side-menu a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+
+    width: 0; /* 평소에는 안보이게 */
+    height: 1px;
+    background-color: #fff;
+
+    transition: width 0.3s ease;
+}
+
+/* 추가 : hover하면 밑줄 나타남 */
+.side-menu a:hover::after{
+    width: 100%;
+}

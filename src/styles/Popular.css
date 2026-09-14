@@ -1,0 +1,225 @@
+
+.popular-wrap{
+    width: 100%;
+    max-width: 1800px;
+    padding: 90px 100px; /* margin말고 padding해야 전체페이지너비에 따라 안의 내용이 자연스레 줄어든다 */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+    font-family: "NanumSquareNeo", serif;
+
+}
+
+.popular-heading{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.popular-eyebrow{
+    font-size: 1.25em;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.popular-eyebrow::before{
+    content: "";
+    width: 15px;
+    height: 2px;
+    background-color: #f5b400;
+}
+
+.popular-title{
+    font-size: 3.75em;
+    font-weight: bold;
+}
+
+.popular-content{
+    display: flex;
+    gap: 100px;
+}
+
+.popular-detail{
+    width: 550px;
+    height: 570px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 30px;
+}
+
+.popular-book-title{
+    min-height: 80px;
+    font-size: 1.9em;
+    padding-bottom: 10px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.popular-book-subtitle{
+    min-height: 35px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #666;
+}
+
+.popular-meta{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 1.2em;
+    padding: 30px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.popular-meta-row{
+    height: auto;
+    display: grid;
+    grid-template-columns: 110px 1fr; /* 이거안하면 flex, 와 label에 width를 줘야함 */
+    align-items: center;
+
+}
+
+.popular-meta-label{
+    font-weight: 600;
+    color: #333;
+}
+.popular-meta-value{
+    color: #555;
+}
+
+.popular-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+
+.popular-btn{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: #fff;
+    cursor: pointer; 
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1)
+
+}
+
+.popular-btn img{
+    width: 20px;
+    height: 20px;
+}
+.popular-btn:hover{
+    transform: scale(1.1);
+}
+
+.popular-page{
+    width: 80px;
+    height: 44px;
+    font-size: 1.1em;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px; /* height 기준 44->22여야하지만 캡슐모양에서는 999px를 줘도된다 */
+    gap: 5px;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.1)
+
+}
+
+
+.popular-page-total{
+    color: #f5b400;
+}
+
+
+.popular-books{
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    flex-shrink: 0;
+    
+}
+
+.popular-main-book{
+    width: 300px;
+    animation: bookSlide 0.5s ease;
+}
+.popular-main-book img{
+    width: 100%;
+    display: block;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+}
+
+.popular-preview-book{
+    width: 190px;
+    flex-shrink: 0;
+    opacity: 0.55;
+    animation: bookSlide 0.5s ease;
+}
+.popular-preview-book img{
+    width: 100%;
+    display: block;
+}
+
+@media (max-width: 1100px){
+
+    .popular-wrap{
+        padding: 60px 40px;
+    }
+
+    .popular-content{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 50px;
+    }
+
+    .popular-detail{
+        width: 100%;
+    }
+
+    .popular-books{
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px){
+    .popular-wrap{
+        padding: 50px 20px;
+    }
+    .popular-content{
+        flex-direction: column;
+    }
+
+}
+
+@keyframes bookSlide{
+    /* currentIndex가 바뀌면 새로운 요소로 취급해달라고 요청
+    이를 css에 animation을 부여하고 html에서 key로 부여해서 
+    key가 바뀌니 기존요소가 아닌 새로운 요소로 인식해서 아래의 애니메이션이 실행됨*/
+
+    from{
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

@@ -131,46 +131,49 @@ function Popular(){
             </div>
             <div className="popular-content">
                 <div className="popular-detail">
-                    <h3 className="popular-book-title">
-                        {currentBook.title}
-                    </h3>
-                    {/* {currentBook.subtitle && ()} // 앞의 조건이 참일때만 뒤의 코드 생성 */}
-                    {/* 조건부랜더링을 넣으려했으나 <p>자체가 사라지므로 레이아웃이 움직이게됨 */}
-                    {/* books에서 ""가 있으므로 유지되니까 조건부랜더링 삭제 */}
-                    <p className="popular-book-subtitle">
-                        {currentBook.subtitle}
-                    </p>
-                    
-                    <div className="popular-meta">
-                        <div className="popular-meta-row">
-                            <span className="popular-meta-label">지은이</span>
-                            <span className="popular-meta-value">{currentBook.author}</span>
-                        </div>
-                        <div className="popular-meta-row">
-                            <span className="popular-meta-label">출판사</span>
-                            <span className="popular-meta-value">{currentBook.publisher}</span>
-                        </div>
-                        <div className="popular-meta-row">
-                            <span className="popular-meta-label">청구기호</span>
-                            <span className="popular-meta-value">{currentBook.callNumber}</span>
-                        </div>
-                        <div className="popular-meta-row">
-                            <span className="popular-meta-label">소장위치</span>
-                            <span className="popular-meta-value">{currentBook.location}</span>
-                        </div>
+                    <div className="popular-book-title-group">
+                        <h3 className="popular-book-title">
+                            {currentBook.title}
+                        </h3>
+                        {/* {currentBook.subtitle && ()} // 앞의 조건이 참일때만 뒤의 코드 생성 */}
+                        {/* 조건부랜더링을 넣으려했으나 <p>자체가 사라지므로 레이아웃이 움직이게됨 */}
+                        {/* books에서 ""가 있으므로 유지되니까 조건부랜더링 삭제 */}
+                        <p className="popular-book-subtitle">
+                            {currentBook.subtitle}
+                        </p>
                     </div>
-                    <div className="popular-bottom">
-                        <button className="popular-btn" type="button" onClick={prevBook}>
-                            <img src={ChevronPrev} alt="이전 버튼" />
-                        </button>
-                        <div className="popular-page">
-                            <span className="popular-page-current">1</span>
-                            <span className="popular-page-slash">/</span>
-                            <span className="popular-page-total">8</span>
+                    <div className="popular-meta-panel">
+                        <dl className="popular-meta">
+                            <div className="popular-meta-row">
+                                <dt className="popular-meta-label">지은이</dt>
+                                <dd className="popular-meta-value">{currentBook.author}</dd>
+                            </div>
+                            <div className="popular-meta-row">
+                                <dt className="popular-meta-label">출판사</dt>
+                                <dd className="popular-meta-value">{currentBook.publisher}</dd>
+                            </div>
+                            <div className="popular-meta-row">
+                                <dt className="popular-meta-label">청구기호</dt>
+                                <dd className="popular-meta-value">{currentBook.callNumber}</dd>
+                            </div>
+                            <div className="popular-meta-row">
+                                <dt className="popular-meta-label">소장위치</dt>
+                                <dd className="popular-meta-value">{currentBook.location}</dd>
+                            </div>
+                        </dl>
+                        <div className="popular-bottom">
+                            <button className="popular-btn" type="button" onClick={prevBook}>
+                                <img src={ChevronPrev} alt="이전 버튼" />
+                            </button>
+                            <div className="popular-page">
+                                <span className="popular-page-current">1</span>
+                                <span className="popular-page-slash">/</span>
+                                <span className="popular-page-total">8</span>
+                            </div>
+                            <button className="popular-btn" type="button" onClick={nextBook}>
+                                <img src={ChevronNext} alt="다음 버튼"/>
+                            </button>
                         </div>
-                        <button className="popular-btn" type="button" onClick={nextBook}>
-                            <img src={ChevronNext} alt="다음 버튼"/>
-                        </button>
                     </div>
                 </div>
                 <div className="popular-books">

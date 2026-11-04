@@ -24,7 +24,7 @@ function QuickMenu(){
                 <button className="quick-btn" type="button">
                     <img className="quick-btn-icon" src={BookCalendar} alt="프로그램 신청"/>
                 </button>
-                <span className="quick-title">프로그램<br/>신청</span>
+                <span className="quick-title">프로그램신청</span>
             </div>
             <div className="quick-item">
                 <button className="quick-btn" type="button">

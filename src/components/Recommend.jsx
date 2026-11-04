@@ -11,10 +11,19 @@ import recommendBook9 from "../assets/images/book_new_9.jpg";
 import recommendBook10 from "../assets/images/book_new_10.jpg";
 import ChevronPrev from "../assets/icons/icon_chevron-prev.svg";
 import ChevronNext from "../assets/icons/icon_chevron-next.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react"; // 캐러셀
 
 
 function Recommend(){
+
+    // 캐러셀 자체를 움직이기 위한 Embla기능
+    // emblaRef: 어느 html 영역을 캐러셀로 움직일지 연결할 때 사용
+    // emblaApi: 캐러셀을 직접 조작할 때 사용. 예를들어 이전/다음 이동, 현재 몇번째 슬라이드인지 확인할 때
+    const [emblaRef, emblaApi] = useEmblaCarousel({
+        loop: true,  // 10번책 다음에 다시 1번책이 나오도록 무한 반복
+        align: "center" // 캐러셀이 한 슬라이드를 선택했을 때 그 선택된 슬라이드를 viewport 가운데에 정렬
+    })
 
     const recommendBooks = [
         {
@@ -134,22 +143,39 @@ function Recommend(){
     const [currentIndex, setCurrentIndex] = useState(0);
     const currentRecommendBook = recommendBooks[currentIndex];
 
+    // Embla가 선택한 책 번호를 currentIndex에 넣기
+    useEffect(function(){
+        if(!emblaApi) return;
+        
+        function selectBook(){ 
+            const index = emblaApi.selectedScrollSnap();
+            setCurrentIndex(index); 
+        }
+        emblaApi.on("select", selectBook);
+    }, [emblaApi]);
+
     function nextBook() {
-        if(currentIndex === recommendBooks.length - 1){
-            setCurrentIndex(0)
-        }
-        else{
-            setCurrentIndex(currentIndex + 1)
-        }
+        // if(currentIndex === recommendBooks.length - 1){
+        //     setCurrentIndex(0)
+        // }
+        // else{
+        //     setCurrentIndex(currentIndex + 1)
+        // }
+
+        if(!emblaApi) return; // 아직 준비가 안되있으면 여기서 함수 종료
+        emblaApi.scrollNext(); // scrollNext는 Embla가 원래 제공하는 기능(메서드)
     }
 
     function prevBook(){
-        if(currentIndex === 0){
-            setCurrentIndex(recommendBooks.length - 1)
-        }
-        else{
-            setCurrentIndex(currentIndex - 1)
-        }
+        // if(currentIndex === 0){
+        //     setCurrentIndex(recommendBooks.length - 1)
+        // }
+        // else{
+        //     setCurrentIndex(currentIndex - 1)
+        // }
+
+        if(!emblaApi) return;
+        emblaApi.scrollPrev();
     }
 
     return(
@@ -159,8 +185,8 @@ function Recommend(){
                 <h2 className="recommend-title">추천 & 신작 도서</h2>
             </div>
             <div className="recommend-content">
-                <button className="recommend-btn" type="button">
-                    <img src={ChevronPrev} className="recommend-prev" onClick={prevBook} alt="이전"/>
+                <button className="recommend-btn" onClick={prevBook} type="button">
+                    <img src={ChevronPrev} className="recommend-prev" alt="이전"/>
                 </button>
 
                 <div className="recommend-content-inner">
@@ -170,7 +196,22 @@ function Recommend(){
                             {currentRecommendBook.description}
                         </p>
                     </div>
+
+
                     <div className="recommend-middle"> {/* 캐러셀 아이템 구조 */}
+                        <div className="recommend-viewport" ref={emblaRef}> {/* viewport: 내가 관리할 캐러셀 영역. 위의 const를 연결 */}
+                            <div className="recommend-container">
+                                {recommendBooks.map(function(book){ {/* map으로데이터를 관리 */}
+                                    return(
+                                        <div className="recommend-book" key={book.id}>
+                                            <img src={book.image} alt={book.title}/>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+
+                        {/* 캐러셀로 인해 삭제된 영역
                         <div className="recommend-book prev2">
                             <img src={currentRecommendBook.image}/>
                         </div>
@@ -186,34 +227,40 @@ function Recommend(){
                         </div>
                         <div className="recommend-book next2">
                             <img src={currentRecommendBook.image}/>
-                        </div>
+                        </div> */}
                     </div>
+
+
                     <div className="recommend-right">
-                        <h3 className="recommend-right-title">{currentRecommendBook.title}</h3>
-                        <p className="recommend-right-subtitle">{currentRecommendBook.subtitle}</p>
-                        <div className="recommend-meta">
-                            <div className="recommend-meta-row">
-                                <span className="recommend-meta-label">저자</span>
-                                <span className="recommend-meta-value">{currentRecommendBook.author}</span>
-                            </div>
-                            <div className="recommend-meta-row">
-                                <span className="recommend-meta-label">번역가</span>
-                                <span className="recommend-meta-value">{currentRecommendBook.translator}</span>
-                            </div>
-                            <div className="recommend-meta-row">
-                                <span className="recommend-meta-label">출판사</span>
-                                <span className="recommend-meta-value">{currentRecommendBook.publisher}</span>
-                            </div>
-                            <div className="recommend-meta-row">
-                                <span className="recommend-meta-label">청구기호</span>
-                                <span className="recommend-meta-value">{currentRecommendBook.callNumber}</span>
-                            </div>
+                        <div className="recommend-book-title-group">
+                            <h3 className="recommend-right-title">{currentRecommendBook.title}</h3>
+                            <p className="recommend-right-subtitle">{currentRecommendBook.subtitle}</p>
+                        </div>
+                        <div className="recommend-meta-panel">
+                            <dl className="recommend-meta">
+                                <div className="recommend-meta-row">
+                                    <dt className="recommend-meta-label">저자</dt>
+                                    <dd className="recommend-meta-value">{currentRecommendBook.author}</dd>
+                                </div>
+                                <div className="recommend-meta-row">
+                                    <dt className="recommend-meta-label">번역가</dt>
+                                    <dd className="recommend-meta-value">{currentRecommendBook.translator}</dd>
+                                </div>
+                                <div className="recommend-meta-row">
+                                    <dt className="recommend-meta-label">출판사</dt>
+                                    <dd className="recommend-meta-value">{currentRecommendBook.publisher}</dd>
+                                </div>
+                                <div className="recommend-meta-row">
+                                    <dt className="recommend-meta-label">청구기호</dt>
+                                    <dd className="recommend-meta-value">{currentRecommendBook.callNumber}</dd>
+                                </div>
+                            </dl>
                         </div>
                     </div>
                 </div>
 
-                <button className="recommend-btn" type="button">
-                    <img src={ChevronNext} className="recommend-next" onClick={nextBook} alt="다음"/>
+                <button className="recommend-btn" onClick={nextBook} type="button">
+                    <img src={ChevronNext} className="recommend-next" alt="다음"/>
                 </button>
             </div>
         </div>

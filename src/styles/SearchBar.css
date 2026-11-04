@@ -17,6 +17,9 @@
     font-size: 1.5em;
     color: #3c3c3c;
     font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    background-color: yellow;
 }
 
 .search-line{

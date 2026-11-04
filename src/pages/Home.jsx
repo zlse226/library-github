@@ -26,11 +26,11 @@ function Home(){
                         </div>
                         <div className="operating-info">
                             <span>
-                                자료실 평일 09:00 ~ 18:00 , 주말 09:00 ~ 17:00
+                                자료실: 평일 09:00 ~ 18:00 , 주말 09:00 ~ 17:00
                             </span>
                             <span className="operating-line"></span>
                             <span>
-                                열람실 07:00 ~ 22:00
+                                열람실: 07:00 ~ 22:00
                             </span>
                         </div>
                     </div>

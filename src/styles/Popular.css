@@ -1,21 +1,23 @@
 
 .popular-wrap{
     width: 100%;
-    max-width: 1800px;
-    padding: 90px 100px; /* margin말고 padding해야 전체페이지너비에 따라 안의 내용이 자연스레 줄어든다 */
+    max-width: 2000px;
+    height: 100%;
+    padding: 90px 0; /* margin말고 padding해야 전체페이지너비에 따라 안의 내용이 자연스레 줄어든다 */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 90px;
+    gap: 150px;
     font-family: "NanumSquareNeo", serif;
 
+    border: 1px solid blue;
 }
 
 .popular-heading{
-    height: 150px;
+    /* height: 150px; */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .popular-eyebrow{
@@ -29,63 +31,95 @@
 .popular-eyebrow::before{
     content: "";
     width: 15px;
-    height: 2px;
+    height: 2.5px;
     background-color: #f5b400;
 }
 
 .popular-title{
-    font-size: 3.75em;
+    font-size: 4em;
     font-weight: bold;
+
 }
 
 .popular-content{
     display: flex;
-    gap: 100px;
+    gap: 80px;
+    
+    background-color:  brown;
 }
 
 .popular-detail{
-    width: 550px;
-    height: 570px;
+    width: 500px;
+    height: 800px;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
     padding: 30px;
+    background-color: purple;
 }
 
+.popular-book-title-group{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 .popular-book-title{
-    min-height: 80px;
-    font-size: 1.9em;
+    min-height: 100px;
+    font-size: 2.3em;
     padding-bottom: 10px;
     line-height: 1.2;
     font-weight: 700;
 }
 
 .popular-book-subtitle{
-    min-height: 35px;
+    min-height: 65px;
     margin-bottom: 10px;
-    font-size: 1.2em;
+    font-size: 1.3em;
     line-height: 1.5;
     color: #666;
+     /* 추가: 제목을 최대 두 줄까지만 표시 */
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.popular-meta-panel{
+    height: 555px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1;
+    gap: 30px;
+    font-size: 1.4em;
+    padding: 30px 0;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
 }
 
 .popular-meta{
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    font-size: 1.2em;
-    padding: 30px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    flex: 1;
+    min-height: 0; /* 내용이 많을때 줄어들 수 있게 설정 */
+    padding: 20px 30px;
 }
 
 .popular-meta-row{
-    height: auto;
-    display: grid;
-    grid-template-columns: 110px 1fr; /* 이거안하면 flex, 와 label에 width를 줘야함 */
+    display: flex;
     align-items: center;
-
+    gap: 20px;
+    min-height: 65px; /* 모든 행의 높이 통일 */
+    border-bottom: 1px solid rgba(60, 60, 60, 0.12);
 }
 
 .popular-meta-label{
+    min-width: 100px;
     font-weight: 600;
     color: #333;
 }
@@ -103,10 +137,9 @@
 
 
 .popular-btn{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,19 +156,23 @@
     height: 20px;
 }
 .popular-btn:hover{
-    transform: scale(1.1);
+    transform: scale(1.15);
+    background-color: #111;
+
+}
+.popular-btn:hover img{
+    filter: brightness(0) invert(1);
 }
 
 .popular-page{
-    width: 80px;
-    height: 44px;
-    font-size: 1.1em;
+    width: 110px;
+    height: 50px;
     background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 999px; /* height 기준 44->22여야하지만 캡슐모양에서는 999px를 줘도된다 */
-    gap: 5px;
+    gap: 10px;
     font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.1)
 
@@ -152,11 +189,14 @@
     align-items: center;
     gap: 80px;
     flex-shrink: 0;
+    flex: 1;
+    padding: 30px;
     
+    border: 2px solid pink;
 }
 
 .popular-main-book{
-    width: 300px;
+    width: 450px;
     animation: bookSlide 0.5s ease;
 }
 .popular-main-book img{
@@ -166,7 +206,7 @@
 }
 
 .popular-preview-book{
-    width: 190px;
+    width: 320px;
     flex-shrink: 0;
     opacity: 0.55;
     animation: bookSlide 0.5s ease;

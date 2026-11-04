@@ -1,20 +1,24 @@
 .recommend-wrap{
     width: 100%;
-    /* max-width: 1800px; */
-    padding: 90px 100px; /* margin말고 padding해야 전체페이지너비에 따라 안의 내용이 자연스레 줄어든다 */
+    max-width: 2000px;
+    height: 100%;
+    padding: 90px 0; /* margin말고 padding해야 전체페이지너비에 따라 안의 내용이 자연스레 줄어든다 */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 90px;
+    gap: 150px;
     font-family: "NanumSquareNeo", serif;
+    position: relative; /* 버튼 위치 선청 */
+
+    border: 1px solid blue;
 
 }
 
 .recommend-heading{
-    height: 150px;
+    /* height: 150px; */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .recommend-eyebrow{
@@ -28,28 +32,29 @@
 .recommend-eyebrow::before{
     content: "";
     width: 15px;
-    height: 2px;
+    height: 2.5px;
     background-color: #f5b400;
 }
 
 .recommend-title{
-    font-size: 3.75em;
+    font-size: 4em;
     font-weight: bold;
 }
 
 .recommend-content{
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 80px;
+
+    background-color: brown;
 }
 
 .recommend-content-inner{
     flex: 1;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 60px;
-
-    background-color: yellow;
 }
 
 .recommend-btn{
@@ -67,7 +72,7 @@
     justify-content: center;
     padding: 0;
     flex-shrink: 0;
-
+    position: absolute;
 }
 
 .recommend-btn img{
@@ -87,20 +92,30 @@
 
 .recommend-left{
     width: 400px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
     flex-shrink: 0;
+    padding: 30px 0;
+
+    border: 2px solid yellow;
 }
 
 .recommend-left-title{
-    font-size: 2em;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-size: 2.3em;
     font-weight: 600;
-
+    background-color:  green;
 }
 .recommend-left-info{
     width: 100%;
+    flex: 1;
+    font-size: 1.1em;
+    margin: 30px;
     line-height: 1.5;
 
 }
@@ -109,24 +124,37 @@
 
 .recommend-middle{
     /* 이미지를 같은 기준점에 놓음 */
-    position: relative;
+    /* position: relative; 캐러셀을 쓰면 position을 쓸 수 없음 */
     width: 900px;
     height: 560px;
     flex-shrink: 0;
+    flex: 1;
+    border: 2px solid pink;
 }
 
 .recommend-book{
-    width: 410px;
-    /* height: 510px; /* 이미지마다 비율이 다르므로 높이는 주지않는다 */
+    /* width: 410px;
+    height: 510px; 이미지마다 비율이 다르므로 높이는 주지않는다
     flex-shrink: 0;
 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform-origin: center; /* 기본값임. center기준으로 transform 적용 (가운데를 고정한채 사방에서 애니메이션) */
+    transform-origin: center; 기본값임. center기준으로 transform 적용 (가운데를 고정한채 사방에서 애니메이션)
     transition: transform 0.5s ease,
-                opacity 0.5s ease;
+                opacity 0.5s ease; */
+
+    flex: 0 0 410px; /* flex-grow: 0 늘어나지않음. flex-shrink: 0 줄어들지 않음. flex-basis: 410px 기본 너비 */
 }
+.recommend-viewport{ /* 캐러셀에서 실제로 보이는 창 */
+    overflow: hidden;
+    width: 100%;
+}
+
+.recommend-container{
+    display: flex;
+}
+
 .recommend-book img{
     width: 100%;
     display: block;
@@ -162,47 +190,80 @@
 
 
 .recommend-right{
-    width: 450px;
-    height: 570px;
+    width: 500px;
+    height: 800px;
     padding: 30px;
     flex-shrink: 0; /* 이 요소의 크기를 절대 줄이지 말것 */
 
     background-color: antiquewhite;
 }
 
+.recommend-book-title-group{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .recommend-right-title{
-    font-size: 1.9em;
-    font-weight: bold;
-    min-height: 80px;
+    min-height: 100px;
+    font-size: 2.3em;
+    padding-bottom: 10px;
+    line-height: 1.2;
+    font-weight: 700;
 
 }
 
 .recommend-right-subtitle{
-    min-height: 35px;
+    min-height: 65px;
     margin-bottom: 10px;
-    font-size: 1.2em;
+    font-size: 1.3em;
     line-height: 1.5;
     color: #666;
+     /* 추가: 제목을 최대 두 줄까지만 표시 */
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+}
+
+.recommend-meta-panel{
+    height: 555px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1;
+    gap: 30px;
+    font-size: 1.4em;
+    padding: 30px 0;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 
 }
 
 .recommend-meta{
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    font-size: 1.2em;
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-    padding: 30px 0;
+    flex: 1;
+    min-height: 0; /* 내용이 많을때 줄어들 수 있게 설정 */
+    padding: 20px 30px;
 }
 
 .recommend-meta-row{
-    display: grid;
-    grid-template-columns: 110px 1fr; /* 이거안하면 flex, 와 label에 width를 줘야함 */
+    display: flex;
     align-items: center;
-}
+    gap: 20px;
+    min-height: 65px; /* 모든 행의 높이 통일 */
+    border-bottom: 1px solid rgba(60, 60, 60, 0.12);}
 
 
 .recommend-meta-label{
+    min-width: 100px;
     font-weight: 600;
     color: #333;
 }

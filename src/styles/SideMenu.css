@@ -1,17 +1,25 @@
 .side-menu{
-    /* width: 130px; */
+    width: auto;
     position: absolute;
     right: 52px;
     top: 50%;
     transform: translateY(-50%);
     padding: 20px;
 
-    display: flex;
+     display: flex;
     flex-direction: column;
     gap: 50px;
+   
     border-radius: 30px;
-    background-color: rgba(220, 220, 220, 0.1);
-    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.35); /* 추가 */
+
+    background-color: rgba(220, 220, 220, 0.15); /* 수정: 0.1 → 0.15 */
+    backdrop-filter: blur(5px); /* 수정: 3px → 5px */
+        -webkit-backdrop-filter: blur(5px); /* 추가: Safari 지원 */
+
+    /* 추가: 배경과 사이드 메뉴를 살짝 구분 */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .side-menu li{

@@ -1,12 +1,11 @@
 .recommend-wrap{
     width: 100%;
     max-width: 2000px;
-    height: 100%;
-    padding: 90px 0; /* margin말고 padding해야 전체페이지너비에 따라 안의 내용이 자연스레 줄어든다 */
+    padding: clamp(40px, 5vh, 70px) 32px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 150px;
+    gap: clamp(30px, 5vh, 60px);
     font-family: "NanumSquareNeo", serif;
     position: relative; /* 버튼 위치 선청 */
 
@@ -44,7 +43,7 @@
 .recommend-content{
     display: flex;
     align-items: center;
-    gap: 80px;
+    gap: clamp(24px, 3vw, 60px);
 
     background-color: brown;
 }
@@ -235,7 +234,7 @@
     flex: 1;
     gap: 30px;
     font-size: 1.4em;
-    padding: 30px 0;
+    padding: 20px 30px;
     border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.4);
@@ -251,7 +250,6 @@
     flex-direction: column;
     flex: 1;
     min-height: 0; /* 내용이 많을때 줄어들 수 있게 설정 */
-    padding: 20px 30px;
 }
 
 .recommend-meta-row{
